@@ -1,0 +1,79 @@
+# --- Python / Flask typical ignores ---
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.env/
+.env.bak/
+env/
+
+# Database files
+*.db
+*.sqlite3
+
+# Flask instance folder
+instance/
+
+# Pytest
+.pytest_cache/
+
+# Coverage reports
+htmlcov/
+.coverage
+coverage.xml
+*.cover
+*.py,cover
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre
+.pyre/
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
+
+# MacOS
+.DS_Store
+
+# --- Vue.js CLI typical ignores ---
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Local env files
+.env.local
+.env.*.local
+
+# Build output
+/dist
+/dist-ssr
+/ssr-manifest.json
+
+# Cache
+.cache/
+.cache-loader/
+.hmr/
+.hot/
+.vite/
+coverage/
+*.tsbuildinfo
+
+# IDEs
+.idea/
+*.sublime-workspace
+*.sublime-project
+

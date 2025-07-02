@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial_scale=1">
+    </head>
+    <body>
+
+
+        {% if show_message == True %}
+        <h1>{{ message }}</h1>
+        {% endif %}
+
+        {%for i in range(3) %}
+            {{i+4}} <br>
+        {% endfor %}
+
+        <h2>this is Heading 2</h2>
+        <h3>this is Heading 3</h3>
+        <h4>this is Heading 4</h4>
+        <h5>this is Heading 5</h5>
+
+        <p>this is para</p>
+        <b>this is bold</b>
+        <hr>
+        <i>this is italic</i>
+
+
+        <table>
+            <tr style="background-color: lightblue;">
+                <th>name</th>
+                <th>roll no.</th>
+            </tr>
+            <tr style="background-color: rgb(149, 169, 176);">
+                <td>shubham</td>
+                <td>21f1007067</td>
+            </tr>
+            <tr style="background-color: rgb(149, 169, 176);">
+                <td>shubham</td>
+                <td>21f1007067</td>
+            </tr>
+            <tr style="background-color: rgb(149, 169, 176);">
+                <td >shubham</td>
+                <td>21f1007067</td>
+            </tr>
+        </table>
+    </body>
+</html>
