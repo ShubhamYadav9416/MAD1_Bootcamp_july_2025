@@ -25,13 +25,16 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{{url_for("home")}}">Home</a>
+                        <a class="nav-link active" aria-current="page" href="{{url_for("librarian_dashboard")}}">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{url_for("login")}}">Login</a>
+                        <a class="nav-link" aria-current="page" href="{{url_for("login")}}">Users</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{{url_for("register")}}">Register</a>
+                        <a class="nav-link" aria-current="page" href="{{url_for("register")}}">Book Requests</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{{url_for("logout")}}">Logout</a>
                     </li>
 
                 </ul>
@@ -42,7 +45,7 @@
         <div class="row">
             <div class="col-2">
             </div>
-            <div class="col-5">
+            <div class="col-8" style="text-align: center;">
                 {% with messages = get_flashed_messages() %}
                 {% if messages %}
                 <ul class=flashes>
@@ -54,23 +57,30 @@
                 </ul>
                 {% endif %}
                 {% endwith %}
-
-                <h3>Login Page</h3>
-                <form class="form" method="POST">
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name = "email">
-                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                <h2>Sections</h2>
+                <br><br>
+                <div class="row">
+                {% for section in sections %}
+                
+                <div class="col-4">
+                <div class="card" style="width: 18rem; text-align: left; margin-bottom: 20px;">
+                    <div class="card-body">
+                        <h5 class="card-title"><b>{{section.name}}</b></h5>
+                        <h6 class="card-subtitle mb-2 text-body-secondary">No. of Books: 4</h6>
+                        <p class="card-text">{{section.description}}</p>
+                        <button type="button" class="btn btn-outline-primary">View Details</button>
                     </div>
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" name="password">
-                    </div>
+                </div>
+                </div>
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
+                {% endfor %}
+                </div>
+                <a href="{{url_for("add_new_section")}}">
+                <button type="button" class="btn btn-primary" >+ Add New Section</button>
+                </a> 
+
             </div>
-            <div class="col-5">
+            <div class="col-2">
             </div>
 
         </div>

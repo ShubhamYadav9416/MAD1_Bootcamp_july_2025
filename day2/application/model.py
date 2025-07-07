@@ -6,3 +6,4 @@ class Users(db.Model):
     name  = db.Column(db.String(100))
     email = db.Column(db.String(100), unique = True, nullable = False)
     password = db.Column(db.String(100), nullable = False)
+    is_active = db.Column(db.Boolean)
