@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+</head>
+
+<body>
+    <div class="container-fluid" style="margin-top: 100px ;">
+        <div class="row">
+            <div class="col-2">
+            </div>
+            <div class="col-8" style="text-align: left;">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{url_for("librarian_dashboard")}}">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Section</li>
+                    </ol>
+                </nav>
+
+                <div class="container-fluid">
+                    <div class="row">
+                        <h3>Books of {{section_name}}</h3>
+                        {% for book in books %}
+                        <div class="col-4" style="margin-bottom: 15px; margin-top: 15px;">
+                            <div class="card" style="width: 18rem;">
+                                <img src="{{"../" + book.book_front_page_url}}" class="card-img-top" alt="..."
+                                    style="height: 300px;">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{book.name}}</h5>
+                                    <p class="card-subtitle">{{book.author_name}}</p>
+                                    <!-- <a href="#" class="btn btn-outline-primary">Go somewhere</a> -->
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <a href="{{url_for("add_new_book", section_id = section_id)}}" class="btn btn-primary">Add New Book</a>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-2">
+        </div>
+
+    </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
