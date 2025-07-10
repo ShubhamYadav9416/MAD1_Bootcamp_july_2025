@@ -8,7 +8,7 @@ class Users(db.Model,UserMixin):
     name  = db.Column(db.String(100))
     email = db.Column(db.String(100), unique = True, nullable = False)
     password = db.Column(db.String(100), nullable = False)
-    is_active = db.Column(db.Boolean)
+    is_active = db.Column(db.Boolean, default=True)
     address = db.Column(db.String(1000))
     is_librarian = db.Column(db.Boolean, default = False)
     

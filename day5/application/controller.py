@@ -80,17 +80,30 @@ def register():
 @app.route("/user_dashboard")
 @login_required
 def user_dashboard():
-    return "this is user dashboard"
+    books = Book.query.all()
+    data = []
+    for book in books:
+        section = Section.query.filter_by(id = book.section_id).first()
+        data.append({
+            "book_name": book.name,
+            "author_name": book.author_name,
+            "section_name": section.name,
+            "image_url": book.book_front_page_url 
+        })
+    
+    return render_template("user_dashboard.html", data = data)
 
 
 @app.route("/librarian_dashboard")
 @login_required
 def librarian_dashboard():
     sections = Section.query.all()
+    print(sections)
     return render_template("librarian_dashboard.html", sections=sections)
 
 
 @app.route("/add_new_section", methods = ["GET","POST"])
+@login_required
 def add_new_section():
     if request.method == "GET":
         return render_template("add_section.html")
@@ -108,12 +121,14 @@ def add_new_section():
         return redirect("/librarian_dashboard")
 
 @app.route("/view_section/<int:id>")
+@login_required
 def view_section(id):
     books = Book.query.all()
     section =  Section.query.filter_by(id = id).first()
     return render_template("section_books.html", section_id = id, books = books, section_name = section.name)
 
 @app.route('/delete_section/<int:id>')
+@login_required
 def delete_section(id):
     section = Section.query.filter_by(id = id).first()
     db.session.delete(section)
@@ -122,9 +137,10 @@ def delete_section(id):
     return redirect("/librarian_dashboard")
 
 @app.route("/add_new_book/<int:section_id>", methods = ["GET","POST"])
+@login_required
 def add_new_book(section_id):
+    section =  Section.query.filter_by(id = section_id).first()
     if request.method == "GET":
-        section =  Section.query.filter_by(id = section_id).first()
         return render_template("add_book.html", section_name = section.name, section_id= section_id)
     if request.method == "POST":
         book_name = request.form["name"]
